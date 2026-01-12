@@ -21,7 +21,7 @@ const CustomTooltip = ({ active, payload, label }) => {
             <div className="w-3 h-3 rounded-full" style={{ backgroundColor: entry.color }} />
             <span className="text-gray-300 text-sm">{entry.name}:</span>
             <span className="text-white font-semibold text-sm">
-              {entry.value.toFixed(2)} W
+              {entry.value.toFixed(2)} kW
             </span>
           </div>
         ))}

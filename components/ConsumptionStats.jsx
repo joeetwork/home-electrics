@@ -34,7 +34,7 @@ export function ConsumptionStats({ consumption, todayStats, dataPoints }) {
               {(consumption?.power || 0).toFixed(2)}
             </p>
             <p className="text-sm text-gray-400 mt-1 flex items-center justify-center gap-1">
-              Current (W)
+              Current (kW)
               <InfoTooltip metricKey="consumptionPower" />
             </p>
           </div>
@@ -51,13 +51,13 @@ export function ConsumptionStats({ consumption, todayStats, dataPoints }) {
             <p className="text-4xl font-bold text-orange-400 tabular-nums">
               {peakConsumption.toFixed(2)}
             </p>
-            <p className="text-sm text-gray-400 mt-1">Peak Today (W)</p>
+            <p className="text-sm text-gray-400 mt-1">Peak Today (kW)</p>
           </div>
           <div className="text-center p-4 bg-blue-500/10 rounded-xl">
             <p className="text-4xl font-bold text-blue-400 tabular-nums">
               {avgConsumption.toFixed(2)}
             </p>
-            <p className="text-sm text-gray-400 mt-1">Average (W)</p>
+            <p className="text-sm text-gray-400 mt-1">Average (kW)</p>
           </div>
         </div>
       </motion.div>

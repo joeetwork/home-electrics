@@ -74,7 +74,7 @@ export function BatteryGauge({ percent, power, temperature }) {
         <div className="flex items-center gap-2">
           <Zap className={`w-5 h-5 ${isCharging ? 'text-energy-400' : isDischarging ? 'text-battery-400' : 'text-gray-500'}`} />
           <span className="text-gray-300">
-            {isCharging ? '+' : ''}{power.toFixed(1)} W
+            {isCharging ? '+' : ''}{power.toFixed(1)} kW
           </span>
         </div>
         {temperature !== undefined && (

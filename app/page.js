@@ -112,7 +112,7 @@ export default function Dashboard() {
               <StatCard
                 title="Solar Generation"
                 value={solar?.power || 0}
-                unit="W"
+                unit="kW"
                 icon={Sun}
                 color="solar"
                 glowClass="glow-solar"
@@ -125,12 +125,12 @@ export default function Dashboard() {
                 icon={Battery}
                 color="battery"
                 glowClass="glow-battery"
-                subtitle={`${battery?.power > 0 ? 'Charging' : battery?.power < 0 ? 'Discharging' : 'Idle'}: ${Math.abs(battery?.power || 0).toFixed(1)} W`}
+                subtitle={`${battery?.power > 0 ? 'Charging' : battery?.power < 0 ? 'Discharging' : 'Idle'}: ${Math.abs(battery?.power || 0).toFixed(1)} kW`}
               />
               <StatCard
                 title="Grid"
                 value={Math.abs(grid?.power || 0)}
-                unit="W"
+                unit="kW"
                 icon={Zap}
                 color="grid"
                 glowClass="glow-grid"
@@ -139,7 +139,7 @@ export default function Dashboard() {
               <StatCard
                 title="Home Consumption"
                 value={consumption?.power || 0}
-                unit="W"
+                unit="kW"
                 icon={Home}
                 color="energy"
                 glowClass="glow-energy"

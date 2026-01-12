@@ -28,7 +28,7 @@ export function SolarArrays({ solar, todayStats }) {
               {(solar?.power || 0).toFixed(2)}
             </p>
             <p className="text-sm text-gray-400 mt-1 flex items-center justify-center gap-1">
-              Current Power (W)
+              Current Power (kW)
               <InfoTooltip metricKey="solarPower" />
             </p>
           </div>
@@ -82,7 +82,7 @@ export function SolarArrays({ solar, todayStats }) {
                   <InfoTooltip metricKey="solarPower" />
                 </span>
                 <span className="text-white font-semibold tabular-nums">
-                  {(array.power || 0).toFixed(2)} W
+                  {(array.power || 0).toFixed(2)} kW
                 </span>
               </div>
               <div className="flex items-center justify-between">

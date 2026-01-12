@@ -31,7 +31,7 @@ export function EnergyFlow({ solar, battery, grid, consumption }) {
           </div>
           <p className="mt-3 text-sm text-gray-400">Solar</p>
           <p className={`text-2xl font-bold tabular-nums ${isSolarActive ? 'text-solar-400' : 'text-gray-600'}`}>
-            {solar.power.toFixed(1)} W
+            {solar.power.toFixed(1)} kW
           </p>
         </motion.div>
 
@@ -46,7 +46,7 @@ export function EnergyFlow({ solar, battery, grid, consumption }) {
           </motion.div>
           <p className="mt-3 text-sm text-gray-400 text-center">Home</p>
           <p className="text-2xl font-bold text-energy-400 text-center tabular-nums">
-            {consumption.power.toFixed(1)} W
+            {consumption.power.toFixed(1)} kW
           </p>
         </div>
 
@@ -61,7 +61,7 @@ export function EnergyFlow({ solar, battery, grid, consumption }) {
           <p className={`text-2xl font-bold tabular-nums ${
             isExporting ? 'text-energy-400' : isImporting ? 'text-grid-400' : 'text-gray-600'
           }`}>
-            {isExporting ? '-' : ''}{Math.abs(grid.power).toFixed(1)} W
+            {isExporting ? '-' : ''}{Math.abs(grid.power).toFixed(1)} kW
           </p>
           <p className="text-xs text-gray-500">
             {isExporting ? 'Exporting' : isImporting ? 'Importing' : 'Idle'}
@@ -88,7 +88,7 @@ export function EnergyFlow({ solar, battery, grid, consumption }) {
             {battery.percent}%
           </p>
           <p className="text-xs text-gray-500">
-            {isCharging ? `+${battery.power.toFixed(1)} W` : isDischarging ? `${battery.power.toFixed(1)} W` : 'Idle'}
+            {isCharging ? `+${battery.power.toFixed(1)} kW` : isDischarging ? `${battery.power.toFixed(1)} kW` : 'Idle'}
           </p>
         </motion.div>
       </div>

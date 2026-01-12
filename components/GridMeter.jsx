@@ -37,7 +37,7 @@ export function GridMeter({ grid, todayStats }) {
               {isExporting ? '-' : ''}{Math.abs(grid?.power || 0).toFixed(2)}
             </p>
             <p className="text-sm text-gray-400 mt-1 flex items-center justify-center gap-1">
-              Power (W)
+              Power (kW)
               <InfoTooltip metricKey="gridPower" />
             </p>
           </div>

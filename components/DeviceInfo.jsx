@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Cpu, Wifi, Thermometer, Info, CheckCircle, AlertCircle } from 'lucide-react';
+import { Cpu, kWifi, Thermometer, Info, CheckCircle, AlertCircle } from 'lucide-react';
 import { InfoTooltip } from './Tooltip';
 
 export function DeviceInfo({ device, inverter, systemData }) {
@@ -51,7 +51,7 @@ export function DeviceInfo({ device, inverter, systemData }) {
               <InfoTooltip metricKey="inverterPower" />
             </p>
             <p className="text-white font-semibold mt-1">
-              {(inverterData.power || 0).toFixed(2)} W
+              {(inverterData.power || 0).toFixed(2)} kW
             </p>
           </div>
           <div className="p-4 bg-white/5 rounded-xl">
