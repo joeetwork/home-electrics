@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from "react";
 
 export function useEnergyData(refreshInterval = 30000) {
   const [data, setData] = useState(null);
@@ -8,7 +8,7 @@ export function useEnergyData(refreshInterval = 30000) {
 
   const fetchData = useCallback(async () => {
     try {
-      const response = await fetch('/api/dashboard');
+      const response = await fetch("/api/dashboard");
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
