@@ -51,7 +51,7 @@ export function DeviceInfo({ device, inverter, systemData }) {
               <InfoTooltip metricKey="inverterPower" />
             </p>
             <p className="text-white font-semibold mt-1">
-              {(inverterData.power || 0).toFixed(2)} kW
+              {(inverterData.power || 0).toFixed(2)} W
             </p>
           </div>
           <div className="p-4 bg-white/5 rounded-xl">

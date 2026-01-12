@@ -55,7 +55,7 @@ export function BatteryDetails({ battery, todayStats }) {
               {isCharging ? '+' : ''}{(battery?.power || 0).toFixed(2)}
             </p>
             <p className="text-sm text-gray-400 mt-1 flex items-center justify-center gap-1">
-              Power (kW)
+              Power (W)
               <InfoTooltip metricKey="batteryPower" />
             </p>
           </div>

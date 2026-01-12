@@ -55,7 +55,7 @@ export function EVCharger({ evChargers }) {
                 {(charger.power || 0).toFixed(2)}
               </p>
               <p className="text-sm text-gray-400 flex items-center justify-center gap-1">
-                Power (kW)
+                Power (W)
                 <InfoTooltip metricKey="evPower" />
               </p>
             </div>

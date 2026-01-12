@@ -21,7 +21,7 @@ const CustomTooltip = ({ active, payload, label }) => {
             <div className="w-3 h-3 rounded-full" style={{ backgroundColor: entry.color }} />
             <span className="text-gray-300 text-sm">{entry.name}:</span>
             <span className="text-white font-semibold text-sm">
-              {entry.value.toFixed(2)} kW
+              {entry.value.toFixed(2)} W
             </span>
           </div>
         ))}
@@ -63,7 +63,7 @@ export function EnergyChart({ data, title }) {
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
             <XAxis dataKey="time" stroke="rgba(255,255,255,0.3)" fontSize={12} tickLine={false} />
-            <YAxis stroke="rgba(255,255,255,0.3)" fontSize={12} tickLine={false} tickFormatter={(v) => `${v}kW`} />
+            <YAxis stroke="rgba(255,255,255,0.3)" fontSize={12} tickLine={false} tickFormatter={(v) => `${v}W`} />
             <Tooltip content={<CustomTooltip />} />
             <Legend formatter={(value) => <span className="text-gray-400 text-sm">{value}</span>} />
             <Area type="monotone" dataKey="solar" name="Solar" stroke="#fbbf24" strokeWidth={2} fillOpacity={1} fill="url(#colorSolar)" />
