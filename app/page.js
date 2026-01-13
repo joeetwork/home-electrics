@@ -1,10 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Sun, Battery, Zap, Home, TrendingUp, RefreshCw,
-  LayoutDashboard, Car, Bell, Cpu
+  LayoutDashboard, Car, Bell, Cpu, LogOut
 } from 'lucide-react';
 import { StatCard } from '../components/StatCard';
 import { EnergyFlow } from '../components/EnergyFlow';
@@ -17,6 +18,7 @@ import { ConsumptionStats } from '../components/ConsumptionStats';
 import { DeviceInfo } from '../components/DeviceInfo';
 import { EVCharger } from '../components/EVCharger';
 import { EventsLog } from '../components/EventsLog';
+import { useAuth } from '../contexts/AuthContext';
 
 const TABS = [
   { id: 'overview', label: 'Overview', icon: LayoutDashboard },
@@ -35,10 +37,16 @@ export default function Dashboard() {
   const [error, setError] = useState(null);
   const [lastUpdated, setLastUpdated] = useState(null);
   const [activeTab, setActiveTab] = useState('overview');
+  const { isAuthenticated, isLoading: authLoading, logout } = useAuth();
+  const router = useRouter();
 
   const fetchData = async () => {
     try {
       const res = await fetch('/api/dashboard', { cache: 'no-store' });
+      if (res.status === 401) {
+        router.push('/login');
+        return;
+      }
       if (!res.ok) throw new Error('Failed to fetch data');
       const result = await res.json();
       setData(result);
@@ -52,12 +60,19 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
-    fetchData();
-    const interval = setInterval(fetchData, 30000);
-    return () => clearInterval(interval);
-  }, []);
+    if (!authLoading && !isAuthenticated) {
+      router.push('/login');
+      return;
+    }
 
-  if (loading) {
+    if (isAuthenticated) {
+      fetchData();
+      const interval = setInterval(fetchData, 30000);
+      return () => clearInterval(interval);
+    }
+  }, [isAuthenticated, authLoading]);
+
+  if (authLoading || loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center">
         <motion.div
@@ -235,8 +250,16 @@ export default function Dashboard() {
               <button
                 onClick={fetchData}
                 className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
+                title="Refresh data"
               >
                 <RefreshCw className="w-5 h-5 text-gray-400" />
+              </button>
+              <button
+                onClick={logout}
+                className="p-2 rounded-lg bg-white/5 hover:bg-red-500/20 transition-colors group"
+                title="Logout"
+              >
+                <LogOut className="w-5 h-5 text-gray-400 group-hover:text-red-400" />
               </button>
             </div>
           </div>

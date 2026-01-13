@@ -1,7 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 
-export function StatCard({ title, value, unit, icon: Icon, color, subtitle, glowClass, tooltip }) {
+export function StatCard({ title, value, unit, icon: Icon, color, subtitle, glowClass, tooltip, precision }) {
   const colorClasses = {
     solar: 'from-solar-500 to-solar-600 text-solar-400',
     battery: 'from-battery-500 to-battery-600 text-battery-400',
@@ -37,7 +37,10 @@ export function StatCard({ title, value, unit, icon: Icon, color, subtitle, glow
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl font-bold text-white tabular-nums"
           >
-            {typeof value === 'number' ? value.toLocaleString('en-GB', { maximumFractionDigits: 1 }) : value}
+            {typeof value === 'number' ? value.toLocaleString('en-GB', {
+              minimumFractionDigits: precision ?? (unit === '%' ? 0 : 2),
+              maximumFractionDigits: precision ?? (unit === '%' ? 0 : 2)
+            }) : value}
           </motion.span>
           <span className="text-gray-400 text-lg">{unit}</span>
         </div>

@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Cpu, kWifi, Thermometer, Info, CheckCircle, AlertCircle } from 'lucide-react';
+import { Cpu, Wifi, Thermometer, Info, CheckCircle, AlertCircle } from 'lucide-react';
 import { InfoTooltip } from './Tooltip';
 
 export function DeviceInfo({ device, inverter, systemData }) {
